@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+.headerSection .back-btn {
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 15px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  float: left;
+}
+
+.headerSection .logout-btn {
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 15px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  float: right;
+}
