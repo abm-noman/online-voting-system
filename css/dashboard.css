@@ -27,3 +27,26 @@
   border-radius: 5px;
   float: right;
 }
+
+#profile{
+  background-color: aqua;
+  width: 35%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 15px;
+  color: black;
+  border-radius: 5px;
+  float: left;
+}
+#group{
+  background-color: #9f7cd4;
+  width: 55%;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+}
