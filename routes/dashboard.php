@@ -5,6 +5,13 @@ if (!isset($_SESSION['userData'])) {
 }
 
 $userData = $_SESSION['userData'];
+$groupData = $_SESSION['groupData'];
+
+if ($_SESSION['userData']['status'] == 0) {
+    $status = '<b style="color:red">Not Voted</b>';
+} else {
+    $status = '<b style="color:green">Voted</b>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,34 +33,54 @@ $userData = $_SESSION['userData'];
     <div id="mainSection">
         <center>
             <div class="headerSection">
-                <button class="back-btn">Back</button>
-                <button class="logout-btn">Log Out</button>
+                <a href="../"><button class="back-btn">Back</button></a> 
+                <a href="logout.php"><button class="logout-btn">Log Out</button></a> 
                 <h1>Online Voting System</h1>
-            </div><br><hr>
+            </div><br>
+            <hr>
         </center>
 
-        
-        <div id="profile">
-            <b>Name: </b> <?php echo $userData['name'] ?> <br>
-            <b>Mobile: </b> <?php echo $userData['mobile'] ?> <br>
-            <b>Address: </b> <?php echo $userData['address'] ?> <br>
-            <b>Status: </b> <?php echo $userData['status'] ?> <br>
+        <div id="main-panel">
+            <div id="profile">
+                <b>Name: </b> <?php echo $userData['name'] ?> <br>
+                <b>Mobile: </b> <?php echo $userData['mobile'] ?> <br>
+                <b>Address: </b> <?php echo $userData['address'] ?> <br>
+                <b>Status: </b> <?php echo $status ?> <br>
+            </div>
+
+            <div id="group">
+                <?php
+                if (($_SESSION['groupData'])) {
+                    for ($i = 0; $i < count($groupData); $i++) {
+                ?>
+                        <div>
+                            <b>Group Name: </b><?php echo $groupData[$i]['name'] ?><br>
+                            <b>Votes: </b><?php echo $groupData[$i]['votes'] ?><br>
+                            <form action="../api/vote.php " method="POST">
+                                <input type="hidden" name="groupVotes" value="<?php echo $groupData[$i]['votes'] ?>">
+                                <input type="hidden" name="groupID" value="<?php echo $groupData[$i]['id'] ?>">
+                                <?php
+                                    if($_SESSION['userData']['status'] == 0){
+                                ?>
+                                <input type="submit" name="vote-btn" value="vote" id="vote-btn">
+                                <?php
+                                    }else{
+                                        ?>
+                                        <button disabled type="submit" name="vote-btn" value="vote" id="voted">Voted</button>
+                                <?php
+                                    }
+                                ?>
+                            </form>
+                        </div>
+                        <hr>
+                <?php
+                    }
+                } else {
+                }
+                ?>
+            </div>
         </div>
-
-        <div id="group">
-            <b>Name: </b><br>
-            <b>Mobile: </b><br>
-            <b>Address: </b><br>
-            <b>Status: </b><br>
-        </div>
-
-
-
     </div>
-
-
-
-
 </body>
 
 </html>

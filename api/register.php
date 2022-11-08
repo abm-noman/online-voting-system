@@ -20,7 +20,7 @@
             echo "
             <script>
                 alert('Some Error Occured');
-                window.location = '../routes/registration.html';
+                window.location = '../routes/registration.php';
             </script> ";
             }
     
@@ -29,6 +29,6 @@
         echo "
             <script>
                 alert('Use Same Password');
-                window.location = '../routes/registration.html';
+                window.location = '../routes/registration.php';
             </script> ";
     }
